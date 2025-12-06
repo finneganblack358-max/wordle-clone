@@ -12,9 +12,8 @@
   <body>
     <h1>Wordle Clone</h1>
     <hr />
-    <p>
-      This is a clone, not in production. It is just a project.
-    </p>
-    <button id="newGame">New Game</button>
+    <p>This is a clone, not in production. It is just a project.</p>
+    <button id="newGame" data-href="{{ url_for('api.new_game') }}">New Game</button>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
   </body>
 </html>
