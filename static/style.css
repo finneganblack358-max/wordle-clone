@@ -30,7 +30,7 @@ hr {
     border: none;
     border-radius: 5px;
     padding: 8px 50px;
-    background-color: rgb(14, 95, 14);
+    background-color: #538d4e;
     color: white;
     font-size: 15px;
     font-weight: bold;
@@ -53,4 +53,30 @@ hr {
     color: white;
     border-radius: 10px;
     text-decoration: none;
+}
+
+#Home {
+    display: none;
+    margin: 10px auto 0;
+    width: max-content;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 50px;
+    background-color: #538d4e;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+#PlayAgain {
+    display: none;
+    margin: 10px auto 0;
+    width: max-content;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 50px;
+    background-color: #b59f3b;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
 }
