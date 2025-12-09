@@ -1,22 +1,9 @@
-from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-import os
+db = None
 
-db = SQLAlchemy()
-
-def create_app():
-    BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-
-    app = Flask(
-        __name__,
-        template_folder=os.path.join(BASE_DIR, "templates"),
-        static_folder=os.path.join(BASE_DIR, "static")
-    )
-    app.config.from_object('api.config.Config')
-
-    db.init_app(app)
-
-    from api.routes import api_bp
-    app.register_blueprint(api_bp)
-
-    return app
+def init_app(app, db_instance=None):
+    global db
+    if db_instance is not None:
+        db = db_instance
+    from .routes import api_bp
+    if 'api' not in app.blueprints:
+        app.register_blueprint(api_bp)

@@ -1,8 +1,9 @@
-from api import create_app, db
+from api import init_app, db
+from flask import Flask
 
-app = create_app()
+app = Flask(__name__)
+init_app(app, db)
 
 if __name__ == "__main__":
-    with app.app_context():
-        db.create_all()
+    
     app.run(debug=True)
