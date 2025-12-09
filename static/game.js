@@ -66,7 +66,6 @@
 
   function showCongrats() {
     disableAllRows();
-    if (document.getElementById("congrats")) return;
     const d = document.createElement("div");
     d.id = "congrats";
     d.innerText = "Congratulations! You guessed the word.";
@@ -94,6 +93,34 @@
     }
   }
 
+function showWrong() {
+    disableAllRows();
+    const message = document.createElement("div");
+    message.id = "wrong";
+    message.innerText = `Sorry, the word was ${todaysWord}`;
+    Object.assign(message.style, {
+      position: "fixed",
+      left: "50%",
+      top: "10%",
+      transform: "translateX(-50%)",
+      background: "#222",
+      color: "white",
+      padding: "12px 20px",
+      borderRadius: "8px",
+      boxShadow: "0 4px 10px rgba(0,0,0,0.5)",
+      zIndex: 1000,
+      textAlign: "center"
+    });
+    document.body.appendChild(message);
+
+    const playAgainBtn = document.getElementById("PlayAgain");
+    if (playAgainBtn) {
+      playAgainBtn.style.display = "block";
+      playAgainBtn.disabled = false;
+      playAgainBtn.focus();
+    }
+  }
+
   function submitRow(rowIndex) {
     const inputs = getRowInputs(rowIndex);
     if (inputs.length !== COL_COUNT) return false;
@@ -111,6 +138,11 @@
     if (guess === solution) {
       showCongrats();
       return true;
+    }
+
+    if (guess !== solution && rowIndex === 4) {
+      showWrong();
+      return false;
     }
     const nextRow = rowIndex + 1;
     if (nextRow < ROW_COUNT) {
@@ -136,8 +168,6 @@
           inputEl.value = letter;
           if (letter && colIndex < inputs.length - 1) {
             inputs[colIndex + 1].focus();
-          } else if (letter && colIndex === inputs.length - 1) {
-            submitRow(rowIndex);
           }
         });
 
