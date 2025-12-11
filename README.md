@@ -1,4 +1,4 @@
-# Wordle Clone
+I# Wordle Clone
 
 Simple browser Wordle-like game built with Flask templates and static JS/CSS.  
 5 rows × 5 columns. Type letters, press Enter to submit a row, correct letters turn green, present letters turn yellow.
@@ -130,17 +130,6 @@ new_game.html should include five `.inputs` rows each containing five `input.inp
 <button id="Home">Go to Home</button>
 <button id="PlayAgain">Play Again</button>
 ```
-
-## Files
-- templates/
-  - index.html
-  - new_game.html
-- static/
-  - style.css
-  - script.js
-  - game.js
-- api/
-  - routes.py
 
 ## Notes / Troubleshooting
 - game.js runs on DOMContentLoaded; ensure script is referenced after the DOM or via template injection.
